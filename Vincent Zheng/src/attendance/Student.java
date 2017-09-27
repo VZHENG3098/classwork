@@ -2,17 +2,17 @@ package attendance;
 
 public class Student implements Attendee {
 
-	private String first;
-	private String last;
-	private boolean inClass = false;
+	private String firstName;
+	private String lastName;
+	private boolean present;
 	
 	public Student(String firstName, String lastName) {
-		this.first = firstName;
-		this.last = lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 	
 	public boolean isPresent() {
-		if(inClass == true) {
+		if(present == true) {
 			return true;
 		}else {
 			return false;
@@ -20,15 +20,40 @@ public class Student implements Attendee {
 	}
 
 	public void setPresent(boolean present) {
-		inClass = present;
+		this.present = present;
 	}
 
 	public String getFirstName() {
-		return first;
+		return firstName;
 	}
 
 	public String getLastName() {
-		return last;
+		return lastName;
+	}
+	public boolean mathces(String first, String last) {
+		return first.toLowerCase().equals(firstName.toLowerCase()) && last.toLowerCase().equals(lastName.toLowerCase());
+	}
+	public boolean matches(String last) {
+		return last.toLowerCase().equals(lastName.toLowerCase());
+	}
+	public String getReportString() {
+		String report = lastName;
+		
+		while(report.length()<20) {
+			report += " ";
+		}
+		
+		report += firstName;
+		while(report.length()<40) {
+			report += " ";
+		}
+		
+		if(present) {
+			return report += "PRESENT";
+		}else{
+			return report += "ABSENT";
+		}
+		
 	}
 
 }
