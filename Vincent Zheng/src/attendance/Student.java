@@ -49,7 +49,7 @@ public class Student implements Attendee {
 		}
 		
 		if(present) {
-			return report += "PRESENT"; //
+			return report += "PRESENT"; 
 		}else{
 			return report += "ABSENT";
 		}
