@@ -12,11 +12,11 @@ public class Utility{
 
 	public static void main(String[] args){
 		//this main method is designed to help you test your keywordIsIsolated method and noNegations method
-		if( keywordIsIsolated(4,"good","i'm good") && keywordIsIsolated(0,"good","good. how are you?") 
+		if( keywordIsIsolated(0,"good","good. how are you?") && keywordIsIsolated(0,"good","good. how are you?") 
 				&& !keywordIsIsolated(4,"good","goodbye. i hope you feel good") && keywordIsIsolated(25,"good","goodbye. i hope you feel good")){
 			print("You passed all the keywordIsIsolated tests.");
 		}
-		if(!noNegations("I am not great, but I am okay", 9) && noNegations("I am not great, but I am okay", 25) && noNegations("okay", 0)){
+		if(!noNegations("I am not great, but I am okay", 25) && noNegations("I am not great, but I am okay", 9) && noNegations("okay", 0)){
 			print("You passed all the noNegations tests.");
 		}
 
@@ -29,6 +29,7 @@ public class Utility{
 			}catch(Exception ex) {
 				checkAfter = null;
 			}
+			System.out.print(checkAfter);
 			if((checkAfter == null) || (checkAfter.compareTo("Z")<-52)){
 				return true;
 			}else {
@@ -42,7 +43,7 @@ public class Utility{
 		if(commaPos != -1) {
 			checkNot = s.substring(commaPos,psn);
 		}
-		System.out.print(checkNot);
+
 		
 			if(checkNot.indexOf("not") != -1) {
 				return true;
