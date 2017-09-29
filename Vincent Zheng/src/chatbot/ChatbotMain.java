@@ -12,7 +12,7 @@ public class ChatbotMain {
 	private static Scanner inputSource = new Scanner(System.in);
 	
 	public static int findKeyword(String searchString, String keyword, int startPsn) {
-		// make lowercase
+		// make lowercase3
 		searchString = searchString.toLowerCase();
 		keyword = keyword.toLowerCase();
 		
@@ -33,7 +33,18 @@ public class ChatbotMain {
 	}
 
 	public static boolean noNegations(String s, int psn){
-		return true;
+		int secondSpace = psn -1;
+		int firstSpace = -1;
+		for(int i = 0; i < secondSpace; i++) {
+			if(s.substring(i,i+1).compareTo(" ") == 0) {
+				firstSpace = i;
+			}
+		}
+		String word = s.substring(firstSpace+1,secondSpace);
+		if(word.equals("not") || word.equals("no"){
+			return false;
+		}
+			return true;
 	}
 
 
