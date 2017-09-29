@@ -12,44 +12,50 @@ public class Utility{
 
 	public static void main(String[] args){
 		//this main method is designed to help you test your keywordIsIsolated method and noNegations method
-		if( keywordIsIsolated(0,"good","good. how are you?") && keywordIsIsolated(0,"good","good. how are you?") 
+		if( keywordIsIsolated(4,"good","i'm good") && keywordIsIsolated(0,"good","good. how are you?") 
 				&& !keywordIsIsolated(4,"good","goodbye. i hope you feel good") && keywordIsIsolated(25,"good","goodbye. i hope you feel good")){
 			print("You passed all the keywordIsIsolated tests.");
 		}
-		if(!noNegations("I am not great, but I am okay", 25) && noNegations("I am not great, but I am okay", 9) && noNegations("okay", 0)){
+		if(!noNegations("I am not great, but I am okay", 9) && noNegations("I am not great, but I am okay", 25) && noNegations("okay", 0)){
 			print("You passed all the noNegations tests.");
 		}
 
 	}
 
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
-		String checkAfter;
-			try {
-				 checkAfter = s.substring(psn+keyword.length(),psn+keyword.length()+1);
-			}catch(Exception ex) {
-				checkAfter = null;
-			}
-			System.out.print(checkAfter);
-			if((checkAfter == null) || (checkAfter.compareTo("Z")<-52)){
-				return true;
-			}else {
-				return false;
-			}
+		keyword = keyword.toLowerCase();
+		String wordAfter = "";
+		s = s.toLowerCase();
+		try {
+			wordAfter = s.substring(psn+keyword.length(),psn+keyword.length()+1);
+			print(wordAfter);
+		}catch(Exception ex) {
+			wordAfter = " ";
+		}
+		if(wordAfter.equals(" ") || wordAfter.equals(".")) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 	public static boolean noNegations(String s, int psn){
-		String checkNot = s.substring(0,psn);
-		int commaPos = checkNot.indexOf(",");
-		if(commaPos != -1) {
-			checkNot = s.substring(commaPos,psn);
-		}
-
-		
-			if(checkNot.indexOf("not") != -1) {
-				return true;
-			}else {
-				return false;
+		int secondSpace = psn -1;
+		int firstSpace = -1;
+		for(int i = 0; i < secondSpace; i++) {
+			if(s.substring(i,i+1).compareTo(" ") == 0) {
+				firstSpace = i;
 			}
+		}
+		if(firstSpace == -1) {
+			return true;
+		}
+		String word = s.substring(firstSpace+1,secondSpace);
+		if(word.equals("not") || word.equals("no")){
+			return false;
+		}
+			return true;
 	}
 
 
