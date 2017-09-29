@@ -29,33 +29,11 @@ public class ChatbotMain {
 	}
 	
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
-		String checkAfter;
-			try {
-				 checkAfter = s.substring(psn+keyword.length(),psn+keyword.length()+1);
-			}catch(Exception ex) {
-				checkAfter = null;
-			}
-			System.out.print(checkAfter);
-			if((checkAfter == null) || (checkAfter.compareTo("Z")<-52)){
-				return true;
-			}else {
-				return false;
-			}
+		return true;
 	}
 
 	public static boolean noNegations(String s, int psn){
-		String checkNot = s.substring(0,psn);
-		int commaPos = checkNot.indexOf(",");
-		if(commaPos != -1) {
-			checkNot = s.substring(commaPos,psn);
-		}
-		System.out.print(checkNot);
-		
-			if(checkNot.indexOf("not") != -1) {
-				return true;
-			}else {
-				return false;
-			}
+		return true;
 	}
 
 
@@ -69,7 +47,7 @@ public class ChatbotMain {
 
 	public static void multiLinePrint(String s){
 		String printString = "";
-		int cutoff = 25;
+		int cutoff = 55;
 		//this while loop last as long as there are words left in the original String
 		while(s.length() > 0){
 
