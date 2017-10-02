@@ -9,7 +9,6 @@ public class Utility{
 
 	private static Scanner inputSource = new Scanner(System.in);
 
-
 	public static void main(String[] args){
 		//this main method is designed to help you test your keywordIsIsolated method and noNegations method
 		if( keywordIsIsolated(4,"good","i'm good") && keywordIsIsolated(0,"good","good. how are you?") 
@@ -26,13 +25,13 @@ public class Utility{
 		keyword = keyword.toLowerCase();
 		String wordAfter = "";
 		s = s.toLowerCase();
+		
 		try {
-			wordAfter = s.substring(psn+keyword.length(),psn+keyword.length()+1);
-			print(wordAfter);
+			wordAfter = s.substring(psn+keyword.length()+1,psn+keyword.length()+2);
 		}catch(Exception ex) {
-			wordAfter = " ";
+			wordAfter = "";
 		}
-		if(wordAfter.equals(" ") || wordAfter.equals(".")) {
+		if(wordAfter.equals("") || wordAfter.compareTo("z") < -26) {
 			return true;
 		}else {
 			return false;
