@@ -31,7 +31,7 @@ public class ArrayMain {
 		//printDeck();
 		
 		warmUpMethods();
-		tuesdayMethods();
+		wednesdayMethods();
 		//testArray = new int[5];
 		//populate(testArray);
 		//populate1ToN(testArray);
@@ -44,31 +44,44 @@ public class ArrayMain {
 		//System.out.println(Arrays.toString(testArray));
 	}
 	
-	private void tuesdayMethods() {
-		// TODO Auto-generated method stub
-		int[] orderTest = {1,2,3,2,5,6,7,8,9,10};
-		longestConsecutiveSequence(orderTest);
-		System.out.println(longestConsecutiveSequence(orderTest));
-	}
-	/** remove the element at index 0, pushes all other elements forward
-	 * 1 goes to 0,2 goes to 1,
-	 * put the element that was at index 0 at the end
-	 * @param arr
-	 */
-	private void frontToBack(int[] arr) {
-		int [] saved = arr;
-		int x = arr[0];
-		for(int i = 0 ; i< arr.length-1; i++) {
-			arr[i] = saved[i+1];
+	private void wednesdayMethods() {
+		int[] diceRolls = new int[10000000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndindex(diceRolls);
+		int longest = data[0];
+		System.out.println(data[0] +" happen at " + data[1] + " sequence was "+ Arrays.toString(subArray(diceRolls,data[1],data[0])));
+		while(longest != 9) {
+			 diceRolls = new int[100000];
+			populate(diceRolls);
+			 data = longestConsecutiveSeqAndindex(diceRolls);
+			 longest = data[0];
+			System.out.println(data[0] +" happen at " + data[1] + " sequence was "+ Arrays.toString(subArray(diceRolls,data[1],data[0])));
 		}
-		arr[arr.length-1] = x;
+	}
+	private int[] longestConsecutiveSeqAndindex(int[] arr) {
+		int[] data = new int[2];//element at zero is length, at 1 is position
+		data[0] = 1;
+		int currentnum = 1;
+		for(int i = 0; i < arr.length-1;i++) {
+			if(isConsecutive(arr,i,i+1)) {
+				currentnum++;
+				if(currentnum > data[0]) {
+					data[0] = currentnum;
+					data[1] = i-currentnum;
+				}
+			}else {
+				currentnum = 1;
+			}
+		}
+		return data;
 	}
 	
-	private void cycleThrough(int[] orderTest, int n) {
-		for(int i = 0; i<n;i++) {
-			frontToBack(orderTest);
-		}
-	}
+	
+	
+	
+	
+	
+
 	private int longestConsecutiveSequence(int[] arr) {
 		int num = 1;
 		int highnum = 1;
@@ -91,6 +104,22 @@ public class ArrayMain {
 		}
 		return check;
 	}
+	
+	private void frontToBack(int[] arr) {
+		int [] saved = arr;
+		int x = arr[0];
+		for(int i = 0 ; i< arr.length-1; i++) {
+			arr[i] = saved[i+1];
+		}
+		arr[arr.length-1] = x;
+	}
+	
+	private void cycleThrough(int[] orderTest, int n) {
+		for(int i = 0; i<n;i++) {
+			frontToBack(orderTest);
+		}
+	}
+	
 	private void warmUpMethods() {
 		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
 		reverseOrder(orderTest);
