@@ -5,12 +5,16 @@ public class ObjectMain {
 	public ObjectMain() {
 		Person[] people = new Person[34];
 		populate(people);
+		
 	//	people[0] = new Thing("toaster oven");
-		Person[] group = selectGroup(people,34);
-		analyzeCommonalities(people,group);
 		//for(Object p : group) {
 		//	System.out.println(p);
 		//}
+		for(Person p: people) {
+			p.mingle(people);
+			System.out.println(p);
+			p.statYourFriends();
+		}
 	}
 	private void analyzeCommonalities(Person [] people,Person[] group) {
 		double averageCommonality = 0;

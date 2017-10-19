@@ -13,13 +13,42 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Borough home;
+	private Hobby hobby;
+	private Person[] friends;
 	
 	public Person(String first, String last, Borough home) {
 		this.firstName = first;
 		this.lastName = last;
 		this.home = home;
+		friends = new Person[3];
+		hobby = Hobby.randomHobby();
 	}
 	
+	public void setInFirstPlace(Person f) {
+		//go backward through an array
+		for(int i = friends.length -1;i>0;i--) {
+			friends[i] = friends[i-1];
+		}
+		friends[0] = f;
+	}
+	public void mingle(Person[] peers) {
+		for(Person p: peers) {
+			if(p != this) {
+				setInFirstPlace(p);
+			}
+		}
+	}
+	public void statYourFriends() {
+		String statement = "";
+		for(int i = 0; i< friends.length ;i++) {
+			if(i == friends.length-1) {
+				statement += "and "+friends[i].firstName;
+			}else {
+				statement += friends[i].firstName+", ";
+			}
+		}
+		System.out.println(statement);
+	}
 	public String toString() {
 		return "My name is "+firstName+" " + lastName+" and I am from "+home+".";
 	}
