@@ -10,8 +10,7 @@ public class PassByValueExamples {
 		Person p = new Person("Random","Dude",Borough.NY_BOROUGHS[0]);
 		int x = 5;
 		int [] arr = {1,2,3};
-
-(p,x,arr);
+		test1(p,x,arr);
 		System.out.println("ha" +p+"" + x+Arrays.toString(arr));
 	}
 	// primitive data can not be reference 
