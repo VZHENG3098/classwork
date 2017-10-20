@@ -15,15 +15,41 @@ public class Person {
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
-	
+	private String nickName;
 	public Person(String first, String last, Borough home) {
 		this.firstName = first;
 		this.lastName = last;
 		this.home = home;
 		friends = new Person[3];
 		hobby = Hobby.randomHobby();
+		nickName = createNickname(firstName);
 	}
-	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	/**
+	 * Pass +by value
+	 * the parameters of a method contains only values,not references
+	 * therefore, when they are changed, the REFRENCE to the original object does not change
+	 */
+	public static String createNickname(String name) {
+		return name.substring(0,return2ndVowelPos(name));
+	}
+	public static int return2ndVowelPos(String name) {
+		boolean firstPast = false;
+		for(int i = 0;i<name.length();i++) {
+			if(name.charAt(i) == 'a' || name.charAt(i) == 'e' || name.charAt(i) == 'i'|| name.charAt(i) == 'o' || name.charAt(i) == 'u'  ) {
+				if(firstPast == true) {
+					return i;
+				}
+				firstPast = true;
+			}
+		}
+		return name.length();
+	}
 	public void setInFirstPlace(Person f) {
 		//go backward through an array
 		for(int i = friends.length -1;i>0;i--) {
@@ -36,7 +62,7 @@ public class Person {
 			if(p != this) {
 				setInFirstPlace(p);
 			}
-		}
+		}     
 	}
 	public void statYourFriends() {
 		String statement = "";
@@ -50,6 +76,6 @@ public class Person {
 		System.out.println(statement);
 	}
 	public String toString() {
-		return "My name is "+firstName+" " + lastName+" and I am from "+home+".";
+		return "My name is "+firstName+" " + lastName+" and I am from "+home+". You can call me "+nickName;
 	}
 }
