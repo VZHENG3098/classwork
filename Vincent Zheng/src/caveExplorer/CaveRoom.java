@@ -38,7 +38,7 @@ public class CaveRoom {
 		for(int i = 0; i<doors.length;i++) {
 			if(doors[i] != null) {
 				exitFound = true;
-				directions += "There is a "+doors[i].getDescription()+"to the " + toDirection(i)
+				directions += "There is a "+doors[i].getDescription()+" to the " + toDirection(i)
 				+". "+doors[i].getDetails()+"\n";
 			}
 			
@@ -93,7 +93,25 @@ public class CaveRoom {
 	 * This is where you edit your caves
 	 */
 	public static void setUpCaves() {
+		//1.Determine size of caves
+		CaveExplorer.caves = new CaveRoom[5][5];
+		CaveRoom[][] c = CaveExplorer.caves; // create a short cut for accessing CaveExplorer.caves;
 		
+		//2. Populate with default caves
+		for(int row = 0; row < c.length; row++) {
+			for (int col = 0; col <c[row].length; col++) {
+				c[row][col] = new CaveRoom("Coordinate ("+row+","+col+")");
+			}
+		}
+		//3. Replace some default rooms with the customs rooms (Save for later)
+		
+		//4. Set starting room
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
+		
+		//5. Set up doors
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 	public void goToRoom(int direction) {
 		//make sure there is a room to go to:
