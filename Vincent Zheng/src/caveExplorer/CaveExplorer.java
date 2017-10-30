@@ -3,23 +3,23 @@ package caveExplorer;
 import java.util.Scanner;
 
 public class CaveExplorer {
-	
+
 	public static CaveRoom[][] caves;
-	public static Scanner in;
-	public static CaveRoom currentRoom;
+	public static Scanner in;//for user input
+	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
 	
+	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves();// creates caves and starting room
+		CaveRoom.setUpCaves();//creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
-		
 	}
-	
+
 	public static void print(String s) {
-		System.out.println(s);// Later : consider replacing with the more sophisticated "Printmultiline"
+		System.out.println(s);//LATER: consider replacing with the more sophistocated "printMultiLine"
 	}
 	
 	private static void startExploring() {
@@ -28,7 +28,7 @@ public class CaveExplorer {
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
-			currentRoom.interpretInput(in.next());
+			currentRoom.interpretInput(in.nextLine());
 		}
 	}
 

@@ -18,10 +18,11 @@ public class CaveRoom {
 		this.description = description;
 		setDefaultContents(" ");
 		contents = defaultContents;
-		
+		//NOTE: Arrays are instantiated with 'null' values
 		borderingRooms = new CaveRoom[4];
 		doors = new Door[4];
 		setDirections();
+		
 		
 	}
 	/*
@@ -30,22 +31,22 @@ public class CaveRoom {
 	 * There is (passage) to (the North)
 	 * If there are no doors that are not null, this set direction
 	 * "There is no way out. You are trapped in this room"
-	 * 
 	 */
 	public void setDirections() {
 		directions = "";
-		boolean exitFound = false;
-		for(int i = 0; i<doors.length;i++) {
+		boolean doorFound = false;
+		for(int i = 0; i < doors.length; i++) {
 			if(doors[i] != null) {
-				exitFound = true;
-				directions += "There is a "+doors[i].getDescription()+" to the " + toDirection(i)
-				+". "+doors[i].getDetails()+"\n";
+				doorFound = true;
+				directions += "There is a "+doors[i].getDescription()+" to the "+
+				toDirection(i)+". "+doors[i].getDetails()+"\n";
 			}
-			
 		}
-		if(!exitFound) {
+		if(!doorFound) {
 			directions = "There is no way out. You are trapped in this room";
 		}
+		//hint: to check if a door is null (or not null), use:
+		//doors[0] == null   (OR USE   doors[0] != null)
 	}
 	public static String toDirection(int dir) {
 		String [] directions = {"the North","the East","the South","The West"};
@@ -114,14 +115,15 @@ public class CaveRoom {
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 	public void goToRoom(int direction) {
-		//make sure there is a room to go to:
-		if(borderingRooms[direction] != null && doors[direction] != null && doors[direction].isOpen()) {
+		if(borderingRooms[direction] != null && doors[direction] != null &&
+				doors[direction].isOpen()) {
 			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 		}else {
-			System.err.println("You can't do that");
+			//print red text
+			System.err.println("You can't do that!");
 		}
 	}
 	public static int oppositeDirection(int dir) {
@@ -148,5 +150,8 @@ public class CaveRoom {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	public Door getDoor(int direction) {
+	return doors[direction];
 	}
 }
