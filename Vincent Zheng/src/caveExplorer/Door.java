@@ -1,7 +1,7 @@
 package caveExplorer;
 
 public class Door {
-	
+
 	private boolean locked;
 	private boolean open;
 	private String description;
@@ -11,6 +11,7 @@ public class Door {
 		locked = false;
 		open = true;
 		description = "passage";
+		details = "";
 	}
 
 	public boolean isLocked() {
