@@ -3,9 +3,13 @@ package caveExplorer;
 public class Inventory {
 
 	private String map;
-	
+	private int health;
+	private int gold;
 	public Inventory() {
+		health = 50;
+		gold = 0;
 		updateMap();
+
 	}
 	
 	public void updateMap() {
@@ -40,9 +44,18 @@ public class Inventory {
 			}
 		}
 	}
-	
+	public void setHP() {
+		health = 100;
+	}
 	public String getDescription() {
-		return map;
-		//return "There is nothing in your inventory.";
+		return map ;
+		//return "h is nothing in your inventory.";
+	}
+	public String getHealth() {
+		return ""+health+"";
+	}
+	public void giveGold() {
+		gold += 100 ;
 	}
 }
+

@@ -32,11 +32,18 @@ public class NPC {
 	}
 
 	public void interact() {
-		CaveExplorer.print("Let's interact! Type 'bye' to stop.");
+		CaveExplorer.print(" Type heal to heal and 'bye' to leave.");
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equalsIgnoreCase("bye")) {
-			CaveExplorer.print("Yeah... I don't do a whole lot.");
-			s = CaveExplorer.in.nextLine();
+			if(s.equalsIgnoreCase("heal")){
+				CaveExplorer.print("I healed you!");
+				CaveExplorer.inventory.setHP();
+				s = "bye";
+			}else {
+				CaveExplorer.print("Yeah... I don't do a whole lot except heal.");
+				s = CaveExplorer.in.nextLine();
+			}
+			
 		}
 		CaveExplorer.print("Later, friend!");
 		active = false;                                                                     

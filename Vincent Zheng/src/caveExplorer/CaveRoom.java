@@ -156,6 +156,7 @@ public class CaveRoom {
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
+			CaveExplorer.inventory.getHealth();
 		}else {
 			//print red test
 			System.err.println("You can't do that!");

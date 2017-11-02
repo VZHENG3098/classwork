@@ -2,6 +2,7 @@ package caveExplorer;
 
 import java.util.Scanner;
  
+
 public class CaveExplorer {
 
 	public static CaveRoom[][] caves;
@@ -26,6 +27,7 @@ public class CaveExplorer {
 		while(playing) {
 			moveNPCs();
 			print(inventory.getDescription());
+			print(inventory.getHealth());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
