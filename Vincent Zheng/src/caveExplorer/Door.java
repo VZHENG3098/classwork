@@ -10,7 +10,7 @@ public class Door {
 	public Door() {
 		locked = false;
 		open = true;
-		description = "passage";
+		description = "Entrance";
 		details = "";
 	}
 
@@ -45,5 +45,4 @@ public class Door {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-
 }
