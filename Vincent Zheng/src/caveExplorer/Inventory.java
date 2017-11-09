@@ -15,9 +15,9 @@ public class Inventory {
 	public void updateMap() {
 		map = " ";
 		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++) {
-			map += "____";
+			map += "______";
 		}
-		map += "___\n";
+		map += "_____\n";
 		for(CaveRoom[] row: CaveExplorer.caves) {
 			for(int i = 0; i < 3; i++) {
 				String text = "";
@@ -28,14 +28,14 @@ public class Inventory {
 						text += "|";
 					}
 					if(i == 0) {
-						text += "   ";
+						text += "     ";
 					} else if ( i == 1) {
-						text += " "+cr.getContents() + " ";
+						text += "  "+cr.getContents() + "  ";
 					} else if( i == 2) {
 						if(cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isOpen()) {
-							text += "   ";
+							text += "     ";
 						} else {
-							text += "___"; //closed door or wall
+							text += "_____"; //closed door or wall
 						}
 					}
 				}//last caveroom

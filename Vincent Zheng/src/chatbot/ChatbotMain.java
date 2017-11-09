@@ -41,7 +41,7 @@ public class ChatbotMain {
 			}
 		}
 		String word = s.substring(firstSpace+1,secondSpace);
-		if(word.equals("not") || word.equals("no"){
+		if(word.equals("not") || word.equals("no")){
 			return false;
 		}
 			return true;
