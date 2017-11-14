@@ -43,7 +43,7 @@ public class Animal {
 		}
 	}
 	public String toString() {
-		return " a" +age+" year old, "+trait1+", "+trait2+" "+description;
+		return " a " +age+" year old, "+trait1+", "+trait2+" "+description;
 	}
 
 	public Trait getTrait1() {
