@@ -28,7 +28,7 @@ public class Enviroment {
 	}
 	
 	public String toString() {
-		return " An vast field";
+		return " A vast field";
 	}
 
 }

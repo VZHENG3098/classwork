@@ -8,7 +8,7 @@ public class Habitat extends Enviroment {
 		Habitat h = new Habitat(5);
 		int count = 0;
 		while(count < 6 ) {
-			Animal a= new Animal();
+			Animal a = new Animal();
 			h.addAnimal(a);
 			count++;
 		}
