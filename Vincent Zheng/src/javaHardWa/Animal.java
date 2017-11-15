@@ -42,6 +42,10 @@ public class Animal {
 			trait2 = new Trait();
 		}
 	}
+	public void act() {
+		System.out.println(this + " is sleeping");
+		mated = true;
+	}
 	public String toString() {
 		return " a " +age+" year old, "+trait1+", "+trait2+" "+description;
 	}
@@ -54,7 +58,7 @@ public class Animal {
 		return trait2;
 	}
 
-	public boolean isMated() {
+	public boolean hasMated() {
 		return mated;
 	}
 
