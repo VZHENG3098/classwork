@@ -30,7 +30,9 @@ public class Animal {
 		}
 		this.description = description;
 	}
-	
+	public String getDescription() {
+		return this.description;
+	}
 	public String getName() {
 		return "animal";
 	}
