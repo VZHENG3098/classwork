@@ -65,13 +65,41 @@ public class Searching {
 
 		return -1;
 	}
-	public static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {
-		if(searchThis[(startIndex+endIndex)/2] == target) {
-			return startIndex+endIndex/2;
-		}else if(searchThis[(startIndex+endIndex)/2] > target){
-			
+	public static int binarySearch(int[] nums, int start, int finish, int target) {
+		
+/*		if(start > finish) return -1;
+		else
+		{
+		int mid = (start+finish)/2;
+
+		if (nums[mid]==target) return mid;
+		
+		else if (nums[mid] > target)
+
+		{
+
+		return binarySearch(nums, start, mid-1, target);
+
+		}
+		else return binarySearch(nums, mid+1,finish, target);
+
+		}
+		*/
+		int middle = (start+finish)/2;
+
+		if(start > finish) {
+			return -1;
+		}else {
+			if(nums[middle] == target) {
+			return middle;
+			}else if(nums[middle] > target){
+				binarySearch(nums,start,middle-1,target);
+			}else{
+				binarySearch(nums,middle+1,start,target);
+			}
 		}
 		return -1;
+		
 		
 	}
 	
